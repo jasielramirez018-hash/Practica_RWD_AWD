@@ -1,0 +1,549 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "aside page-title"
+        "aside content";
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f8;
+    font-family: Arial, sans-serif;
+}
+
+/* Mejora visual de la barra lateral */
+header {
+    grid-area: aside;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    background: linear-gradient(180deg, #1e1b4b, #312e81) !important;
+    background-color: #1a1a55;
+    color: #fff;
+    border-right: 1px solid #3730a3;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.brand-container {
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+}
+
+.brand-title {
+    font-size: 1.4rem;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+}
+
+.brand-subtitle {
+    font-size: 0.8rem;
+    color: #c7d2fe;
+}
+
+/* Estilo para los filtros dentro de la barra lateral */
+.sidebar-filters {
+    width: 100%;
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.sidebar-filters summary {
+    margin-bottom: 18px;
+    color: #e0e7ff;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 700;
+    list-style-position: inside;
+}
+
+.sidebar-filters[open] summary {
+    margin-bottom: 18px;
+}
+
+.sidebar-filters h3 {
+    margin: 0 0 24px;
+    font-size: 1.2rem;
+    line-height: 1.3;
+    color: #e0e7ff;
+}
+
+.filter-group {
+    display: grid;
+    gap: 9px;
+    margin-bottom: 22px;
+}
+
+.filter-group label {
+    display: block;
+    color: #e4e7ff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.filter-group select {
+    width: 100%;
+    min-width: 0;
+    padding: 11px 12px;
+    border: 1px solid #93c5fd;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    color: #1e3a8a;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(15, 23, 42, 0.16);
+}
+
+.filter-group select:focus {
+    border-color: #60a5fa;
+    outline: 3px solid rgba(96, 165, 250, 0.35);
+}
+
+.filter-group select option {
+    background-color: #eff6ff;
+    color: #1e3a8a;
+}
+
+.filter-group select option:checked {
+    background-color: #2563eb;
+    color: #fff;
+}
+
+.filter-group input[type="range"] {
+    width: 100%;
+    margin: 5px 0 0;
+    padding: 0;
+    accent-color: #aab5ff;
+    cursor: pointer;
+}
+
+#priceValue {
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+/* ==========================================
+   ESTILOS PARA EL GRÁFICO EN LA BARRA LATERAL
+   ========================================== */
+.sidebar-chart-container {
+    margin-top: 25px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-chart-container h3 {
+    font-size: 0.9rem;
+    color: #fff;
+    margin: 0 0 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 6px;
+}
+
+.chart-metric {
+    margin-bottom: 10px;
+}
+
+.chart-metric:last-child {
+    margin-bottom: 0;
+}
+
+.chart-metric-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: #cbd5e1;
+    margin-bottom: 3px;
+}
+
+.chart-bar-bg {
+    background: rgba(255, 255, 255, 0.1);
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.chart-bar-fill-rwd {
+    background: #e74c3c;
+    height: 100%;
+    width: 90%;
+}
+
+.chart-bar-fill-awd {
+    background: #2ecc71;
+    height: 100%;
+    width: 35%;
+}
+
+/* Navegación en el Header (si aplica) */
+header nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+header nav ul li {
+    margin: 0;
+}
+
+header nav ul li a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+header nav ul li a:hover {
+    background-color: #2c2c88;
+}
+
+/* Contenedor Principal */
+body > h1 {
+    grid-area: page-title;
+    margin: 0;
+    padding: 20px 30px 0;
+    color: #555;
+    font-size: 1.2rem;
+}
+
+.content-container {
+    grid-area: content;
+    min-width: 0;
+    padding: 30px;
+}
+
+.search-section {
+    margin-bottom: 28px;
+}
+
+.search-section label {
+    display: block;
+    margin-bottom: 8px;
+    color: #24264f;
+    font-weight: 700;
+}
+
+.search-section input {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 15px;
+    border: 1px solid #d5d9e0;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #24264f;
+    font: inherit;
+    box-shadow: 0 2px 8px rgba(26, 26, 85, 0.04);
+}
+
+.search-section input:focus {
+    border-color: #5258a6;
+    outline: 3px solid rgba(82, 88, 166, 0.16);
+}
+
+.search-hint {
+    margin: 8px 0 0;
+    color: #6b7280;
+    font-size: 0.85rem;
+}
+
+.results-count {
+    margin: 0 0 14px;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.empty-results {
+    padding: 20px;
+    border: 1px dashed #c7cbe0;
+    border-radius: 10px;
+    color: #555;
+    text-align: center;
+}
+
+.intro-section h1 {
+    margin-top: 0;
+    color: #1a1a55;
+    font-size: 1.8rem;
+}
+
+.intro-section p {
+    margin: 0 0 40px;
+    color: #444;
+    line-height: 1.6;
+}
+
+.cards-section h2 {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+    color: #1a1a55;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 340px));
+    gap: 20px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+    border: 1px solid #e1e4e8;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card[hidden] {
+    display: none;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+}
+
+.card-img {
+    display: block;
+    width: 100%;
+    height: 150px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    background-color: #e9ecef;
+    color: #6c757d;
+    font-size: 0.9rem;
+    font-weight: bold;
+    object-fit: contain;
+}
+
+.card picture {
+    display: block;
+    width: 100%;
+}
+
+.product-image-link {
+    display: block;
+}
+
+.product-image-link:focus-visible {
+    border-radius: 6px;
+    outline: 3px solid #2563eb;
+    outline-offset: 3px;
+}
+
+.card h3 {
+    margin: 0 0 8px;
+    color: #333;
+    font-size: 1rem;
+}
+
+.product-title-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.product-title-link:hover {
+    text-decoration: underline;
+}
+
+.producto-info {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.specs {
+    display: grid;
+    gap: 6px;
+    margin: 0 0 16px;
+    padding: 0;
+    color: #666;
+    font-size: 0.85rem;
+    list-style: none;
+}
+
+.producto-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.producto-footer .precio {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.producto-footer .buy-btn {
+    width: 100%;
+    min-height: 44px;
+}
+
+.card p {
+    margin: 0 0 15px;
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.card .card-price {
+    margin: 0;
+    color: #1a1a55;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.buy-btn {
+    display: block;
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 5px;
+    background-color: #1a1a55;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.buy-btn:hover {
+    background-color: #2c2c88;
+}
+
+.comparison-section {
+    margin-top: 36px;
+}
+
+.comparison-section h2 {
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+    color: #1a1a55;
+}
+
+.table-scroll {
+    overflow-x: auto;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 12px;
+    border: 1px solid #e1e4e8;
+    text-align: left;
+    vertical-align: top;
+}
+
+.comparison-table thead {
+    background-color: #1e1b4b;
+    color: #fff;
+}
+
+/* Media Queries para responsividad */
+@media (min-width: 640px) and (max-width: 1024px) {
+    body {
+        grid-template-columns: 220px minmax(0, 1fr);
+    }
+
+    .content-container {
+        padding: 24px;
+    }
+
+    .cards-grid {
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+    }
+}
+
+@media (max-width: 639px) {
+    body {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto auto 1fr;
+        grid-template-areas:
+            "aside"
+            "page-title"
+            "content";
+    }
+
+    header {
+        padding: 20px;
+    }
+
+    .sidebar-filters {
+        max-width: 440px;
+        margin: 20px auto 0;
+    }
+
+    .sidebar-filters summary {
+        margin-bottom: 0;
+    }
+
+    .sidebar-filters[open] summary {
+        margin-bottom: 18px;
+    }
+
+    .sidebar-filters h3 {
+        margin-bottom: 18px;
+    }
+
+    body > h1 {
+        padding: 16px 20px 0;
+    }
+
+    .content-container {
+        padding: 20px;
+    }
+
+    .intro-section h1 {
+        font-size: 1.5rem;
+    }
+
+    .cards-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .content-container {
+        padding: 18px 16px 28px;
+    }
+
+    .intro-section h1 {
+        font-size: 1.4rem;
+        line-height: 1.25;
+    }
+
+    .intro-section p {
+        margin-bottom: 28px;
+    }
+
+    .cards-section h2 {
+        font-size: 1.15rem;
+    }
+}

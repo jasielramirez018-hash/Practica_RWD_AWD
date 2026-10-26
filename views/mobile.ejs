@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWD Mobile - Catálogo Ligero</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <!-- BARRA LATERAL MÓVIL (Sin gráfico de comparativa para aligerar el payload) -->
+    <header class="sidebar-modern">
+        <div class="brand-container">
+            <div class="brand-title">RWD vs AWD (Mobile)</div>
+            <span class="brand-subtitle">DOM Optimizado en Servidor</span>
+        </div>
+        
+        <!-- El panel desplegable de filtros -->
+        <details class="sidebar-filters">
+            <summary>Filtrar catálogo</summary>
+            <div class="filter-group">
+                <label for="category">Categoría:</label>
+                <select id="category">
+                    <option value="all">Todos los dispositivos</option>
+                    <option value="laptops">Laptops & PC</option>
+                    <option value="smartphones">Smartphones</option>
+                    <option value="tablets">Tablets</option>
+                    <option value="components">Componentes Server</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="priceRange">Precio Máx:</label>
+                <input type="range" id="priceRange" min="12000" max="30000" step="1000" value="30000" aria-describedby="priceValue">
+                <output id="priceValue" for="priceRange">$30,000</output>
+            </div>
+        </details>
+        <!-- NOTA TÉCNICA (Fase 3): El gráfico de comparativa se omitió aquí en el servidor para reducir bytes en móvil. -->
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="content-container">
+        <section class="intro-section">
+            <h1>Versión Adaptativa (AWD) - Móvil</h1>
+            <p>Vista ligera entregada exclusivamente por el servidor a dispositivos móviles.</p>
+        </section>
+
+        <!-- BARRA DE BÚSQUEDA -->
+        <section class="search-section">
+            <label for="searchInput">Buscar producto</label>
+            <input type="search" id="searchInput" placeholder="Ejemplo: laptop, smartphone, RAM..." aria-label="Buscar productos">
+            <p class="search-hint">Busca por nombre o descripción del producto.</p>
+        </section>
+
+        <section class="cards-section">
+            <h2>Catálogo de Dispositivos y Componentes</h2>
+            
+            <p id="resultsCount" class="results-count" aria-live="polite"></p>
+            <p id="emptyResults" class="empty-results" hidden>No hay productos que coincidan con estos filtros.</p>
+            
+            <div class="cards-grid">
+                <!-- Tarjeta 1 -->
+                <article class="card grid-item" data-category="laptops" data-price="12000">
+                    <picture>
+                        <img class="card-img" src="https://i5-mx.walmartimages.com/asr/f249a15d-65b8-47fd-bc26-901b77fc9645.339545d0c70b8a24373c9ea94a232ded.jpeg?odnHeight=300&amp;odnWidth=300&amp;odnBg=FFFFFF" alt="Laptop Acer Nitro 5 con procesador Intel Core i5 y gráficos RTX" loading="lazy" decoding="async">
+                    </picture>
+                    <div class="producto-info">
+                        <h3>Acer Nitro 5 i5 RTX</h3>
+                        <ul class="specs">
+                            <li><strong>CPU:</strong> Intel Core i5-12500H</li>
+                            <li><strong>RAM:</strong> 32GB</li>
+                        </ul>
+                        <div class="producto-footer">
+                            <span class="precio card-price">Precio: $12,000</span>
+                            <button type="button" class="buy-btn">Comprar</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Tarjeta 2 -->
+                <article class="card grid-item" data-category="smartphones" data-price="16000">
+                    <picture>
+                        <img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR04thVsQFY6qfFeHuoPaAZWNTWSCdF1ybOI-dcxonR-cbwK51XGyRBBz-R&amp;s=5" alt="Teléfono Realme GT3 240W" loading="lazy" decoding="async">
+                    </picture>
+                    <div class="producto-info">
+                        <h3>Realme GT3 240W</h3>
+                        <ul class="specs">
+                            <li><strong>Pantalla:</strong> AMOLED 144Hz</li>
+                        </ul>
+                        <div class="producto-footer">
+                            <span class="precio card-price">Precio: $16,000</span>
+                            <button type="button" class="buy-btn">Comprar</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Tarjeta 3 -->
+                <article class="card grid-item" data-category="laptops" data-price="25000">
+                    <picture>
+                        <img class="card-img" src="https://http2.mlstatic.com/D_Q_NP_2X_666204-MLM113984713664_072026-P.webp" alt="PC Gamer con gabinete negro e iluminación RGB" loading="lazy" decoding="async">
+                    </picture>
+                    <div class="producto-info">
+                        <h3>PC Gamer Ryzen 5600G</h3>
+                        <ul class="specs">
+                            <li><strong>RAM:</strong> 32GB | <strong>SSD:</strong> 1TB</li>
+                        </ul>
+                        <div class="producto-footer">
+                            <span class="precio card-price">Precio: $25,000</span>
+                            <button type="button" class="buy-btn">Comprar</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Tarjeta 4 -->
+                <article class="card grid-item" data-category="smartphones" data-price="14000">
+                    <picture>
+                        <img class="card-img" src="https://http2.mlstatic.com/D_NQ_NP_658016-MLA110401061149_042026-O.webp" alt="Smartphone 5G Edition" loading="lazy" decoding="async">
+                    </picture>
+                    <div class="producto-info">
+                        <h3>Smartphone 5G Edition</h3>
+                        <ul class="specs">
+                            <li><strong>Cámara:</strong> 64MP</li>
+                        </ul>
+                        <div class="producto-footer">
+                            <span class="precio card-price">Precio: $14,000</span>
+                            <button type="button" class="buy-btn">Comprar</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Tarjeta 5 -->
+                <article class="card grid-item" data-category="components" data-price="22000">
+                    <picture>
+                        <img class="card-img" src="https://acf.geeknetic.es/imgri/imagenes/auto/25/02/06/leb-los-intel-xeon-han-bajado-sus-ventas-a-minimos-en-los-ultimos-13-anos-con-un-volumen-de-la-mitad-qu.jpg?f=webp" alt="Procesador Intel Xeon Scalable" loading="lazy" decoding="async">
+                    </picture>
+                    <div class="producto-info">
+                        <h3>Intel Xeon Scalable</h3>
+                        <ul class="specs">
+                            <li><strong>Núcleos:</strong> 32</li>
+                        </ul>
+                        <div class="producto-footer">
+                            <span class="precio card-price">Precio: $22,000</span>
+                            <button type="button" class="buy-btn">Comprar</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Tarjeta 6 -->
+                <article class="card grid-item" data-category="components" data-price="12000">
+                    <picture>
+                        <img class="card-img" src="https://m.media-amazon.com/images/I/61kfY6Ydm2L.jpg" alt="Memoria RAM Kingston Fury Beast Black DDR4 de 64GB" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+                    </picture>
+                    <div class="producto-info">
+                        <h3>Kingston Fury 64GB Kit</h3>
+                        <ul class="specs">
+                            <li><strong>Tipo:</strong> DDR4 3600MHz</li>
+                        </ul>
+                        <div class="producto-footer">
+                            <span class="precio card-price">Precio: $12,000</span>
+                            <button type="button" class="buy-btn">Comprar</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Tarjeta 7 -->
+                <article class="card grid-item" data-category="components" data-price="15000">
+                    <picture>
+                        <img class="card-img" src="https://http2.mlstatic.com/D_Q_NP_2X_942996-MLA97104723837_112025-T.webp" alt="Unidad SSD M.2 NVMe de 2 TB" loading="lazy" decoding="async">
+                    </picture>
+                    <div class="producto-info">
+                        <h3>SSD M.2 NVMe 2TB</h3>
+                        <ul class="specs">
+                            <li><strong>Formato:</strong> M.2 NVMe</li>
+                        </ul>
+                        <div class="producto-footer">
+                            <span class="precio card-price">Precio: $15,000</span>
+                            <button type="button" class="buy-btn">Comprar</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Tarjeta 8 -->
+                <article class="card grid-item" data-category="components" data-price="30000">
+                    <picture>
+                        <img class="card-img" src="https://www.profesionalreview.com/wp-content/uploads/2020/07/NVIDIA-Ampere-A100-es-la-GPU-m%C3%A1s-r%C3%A1pida-jam%C3%A1s-registrada.jpg" alt="Tarjeta aceleradora NVIDIA A100" loading="lazy" decoding="async">
+                    </picture>
+                    <div class="producto-info">
+                        <h3>NVIDIA A100 Tensor</h3>
+                        <ul class="specs">
+                            <li><strong>Arquitectura:</strong> Ampere</li>
+                        </ul>
+                        <div class="producto-footer">
+                            <span class="precio card-price">Precio: $30,000</span>
+                            <button type="button" class="buy-btn">Comprar</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Tarjeta 9 -->
+                <article class="card grid-item" data-category="laptops" data-price="28000">
+                    <picture>
+                        <img class="card-img" src="https://m.media-amazon.com/images/I/61djcuuntkL._AC_UF894,1000_QL80_.jpg" alt="Laptop HP Business de 14 pulgadas color rosa" loading="lazy" decoding="async">
+                    </picture>
+                    <div class="producto-info">
+                        <h3>Ultrabook 14" Business</h3>
+                        <ul class="specs">
+                            <li><strong>Procesador:</strong> Core i7</li>
+                        </ul>
+                        <div class="producto-footer">
+                            <span class="precio card-price">Precio: $28,000</span>
+                            <button type="button" class="buy-btn">Comprar</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Tarjeta 10 -->
+                <article class="card grid-item" data-category="tablets" data-price="16000">
+                    <picture>
+                        <img class="card-img" src="https://http2.mlstatic.com/D_NQ_NP_894247-MLA110467246753_042026-O.webp" alt="Tablet Pro 5G" loading="lazy" decoding="async">
+                    </picture>
+                    <div class="producto-info">
+                        <h3>Tablet Pro 5G</h3>
+                        <ul class="specs">
+                            <li><strong>Conectividad:</strong> 5G</li>
+                        </ul>
+                        <div class="producto-footer">
+                            <span class="precio card-price">Precio: $16,000</span>
+                            <button type="button" class="buy-btn">Comprar</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Tarjeta 11 -->
+                <article class="card grid-item" data-category="components" data-price="18000">
+                    <picture>
+                        <img class="card-img" src="https://shopcdnpro.grainajz.com/category/373019/2354/2b0b2f18096e6575780df0cd34deea8c/80Plus%20Platinum%20GS-1600W%20High%20Efficiency%201%2B1%20Redundant%20Switching%20Power%20Supply%20For%20Servers.jpg" alt="Fuente redundante de poder para servidor con módulos de ventilación dobles" loading="lazy" decoding="async">
+                    </picture>
+                    <div class="producto-info">
+                        <h3>Fuente Redundante 1600W</h3>
+                        <ul class="specs">
+                            <li><strong>Certificación:</strong> 80 Plus Platinum</li>
+                        </ul>
+                        <div class="producto-footer">
+                            <span class="precio card-price">Precio: $18,000</span>
+                            <button type="button" class="buy-btn">Comprar</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Tarjeta 12 -->
+                <article class="card grid-item" data-category="components" data-price="13000">
+                    <picture>  
+                        <img class="card-img" src="https://m.media-amazon.com/images/I/61vQaSB+OrL.jpg" alt="Tarjeta de red de servidor 10GbE con puertos SFP+" loading="lazy" decoding="async">
+                    </picture>
+                    <div class="producto-info">
+                        <h3>Tarjeta de Red 10GbE</h3>
+                        <ul class="specs">
+                            <li><strong>Velocidad:</strong> 10 Gbps</li>
+                        </ul>
+                        <div class="producto-footer">
+                            <span class="precio card-price">Precio: $13,000</span>
+                            <button type="button" class="buy-btn">Comprar</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Script del cliente -->
+    <script src="/script.js"></script>
+</body>
+</html>

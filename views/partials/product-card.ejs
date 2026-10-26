@@ -1,0 +1,11 @@
+<article class="card" data-category="<%= product.category %>" data-price="<%= product.price %>">
+    <!-- En móvil se usa la imagen JPEG reducida; el PNG original queda como alternativa de alta resolución. -->
+    <picture>
+        <source media="(max-width: 639px)" type="image/jpeg" srcset="<%= product.mobileImage %>">
+        <img class="card-img" src="<%= product.image %>" alt="<%= product.alt %>" loading="lazy" decoding="async">
+    </picture>
+    <h3><%= product.name %></h3>
+    <p><%= product.description %></p>
+    <p class="card-price">Precio: $<%= product.price.toLocaleString('es-MX') %></p>
+    <button class="buy-btn" type="button">Comprar</button>
+</article>

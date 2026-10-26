@@ -1,0 +1,30 @@
+<header class="sidebar-modern">
+    <div class="brand-container">
+        <div class="brand-title">RWD vs AWD</div>
+        <span class="brand-subtitle">Laboratorio Web</span>
+    </div>
+    <nav aria-label="Versiones de la práctica">
+        <ul>
+            <li><a href="/responsive">RWD responsivo</a></li>
+            <li><a href="/adaptive">AWD adaptativo</a></li>
+        </ul>
+    </nav>
+    <details class="sidebar-filters" <%= isMobile ? '' : 'open' %>>
+        <summary>Filtrar catálogo</summary>
+        <div class="filter-group">
+            <label for="category">Categoría:</label>
+            <select id="category">
+                <option value="all">Todos los dispositivos</option>
+                <option value="laptops">Laptops &amp; PC</option>
+                <option value="smartphones">Smartphones</option>
+                <option value="tablets">Tablets</option>
+                <option value="components">Componentes server</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label for="priceRange">Precio máximo:</label>
+            <input type="range" id="priceRange" min="12000" max="30000" step="1000" value="30000" aria-describedby="priceValue">
+            <output id="priceValue" for="priceRange">$30,000</output>
+        </div>
+    </details>
+</header>
